@@ -1,0 +1,123 @@
+li{
+  list-style-type:none;
+}
+ul{
+padding-left: 0px;
+margin-bottom: 0px;
+}
+p{
+margin-bottom: 0px
+}
+.form-select{
+padding: 0px;
+background-image: none;
+border: none;
+}
+.reportnote {
+background-color: #ffdfae;
+padding: 20px;
+border-radius: 6px;
+margin: 50px 0 0 0;
+}
+.inputfile-box .file-box {
+height: 50px !important;
+line-height: 50px !important;
+padding-left: 45px !important;
+overflow: hidden !important;
+background: url(../src/assets/img/icons/calander.svg) no-repeat left 15px center;
+background-size: 22px !important;
+border: 1px solid var(--frmBorderClr) !important;
+border-radius: var(--frmRadius) !important;
+font-size: var(--frmLabelfsize) !important;
+color: var(--frmLabelClr) !important;
+display: block !important;
+}
+
+.inputfile-box {
+position: relative;
+margin-bottom: 15px;
+}
+.inputfile-box .inputfile {
+display: none;
+}
+
+.inputfile-box .file-button {
+  display: none;
+}
+.inputfile-box label {
+width: 100%;
+}
+
+.unique{
+padding: 0 !important;
+border: none !important;
+}
+.unique input:first-child{
+width: 100% !important;
+height: var(--frmFieldHeight) !important;
+font-weight: inherit !important;
+text-align: left !important;
+padding: 18px 35px 5px var(--frmFieldGap) !important;
+border: 1px solid var(--frmBorderClr) !important;
+font-size: var(--fsize) !important;
+resize: none !important;
+background-color: transparent !important;
+color: var(--frmClr);
+/* background-color: var(--frmFieldBg); */
+}
+#basic-typeahead-single{
+font-size: var(--fsize) !important;
+font-weight: inherit !important;
+}
+#ui-datepicker-div{
+  z-index: 100000 !important;
+}
+.extraWidth{
+  /* width: 140% !important; */
+}
+.rbt-highlight-text{
+  background-color: white;
+}
+.disbleField{
+  color: #d6d6d6 !important;
+  pointer-events: none !important;
+}
+.page-item .page-link {
+  color: #CF0918;
+}
+.page-item.active .page-link {
+  color: #fff;
+  background-color: #CF0918;
+  border-color: #CF0918;
+}
+.excessRiskRadioBtn .form-check-input:checked {
+  background-color: #fff;
+  border-color: rgba(0,0,0,.25);;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+
+input[type=number] {
+-moz-appearance: textfield;
+}
+
+.manualTruncate{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.pac-container{
+  z-index:999991;
+}
+.hoverableCell {
+  max-width: 150px; 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: max-width 5s ease; 
+}

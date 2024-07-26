@@ -1,0 +1,31 @@
+﻿FileType,status,DocumentType,TransactionIndicator
+-select-,-select-,-select-,-select-
+Bitmap Image,Approved,Audit report,quote
+CSV (comma-separated values),Approving,Binder,policy
+GIF Image,Draft,Confirmation letter,account
+HTML,Final,Credit report,
+JPEG Image,,Declination letter,
+MPEG Video,,DecSheet,
+Microsoft Audio,,Diagram,
+Microsoft Excel Worksheet,,Email,
+Microsoft Excel Worksheet (Windows 98),,Email Sent,
+Microsoft MODI,,Inspection report,
+Microsoft Video,,Letter received,
+Microsoft Word Document,,Letter sent,
+OCTET Stream,,Loss history,
+Open XML presentation,,Loss information,
+Open XML spreadsheet,,MVR,
+Open XML word document,,New business application,
+PDF,,Not-Taken letter,
+PNG Image,,Other,
+Plain Text,,Policy summary,
+Postscript,,Quote,
+PowerPoint,,Renewal information/instructions,
+Progressive JPEG Image,,Statement,
+QuickTime Video,,,
+Rich Text,,,
+Rich Text Format,,,
+TIFF Image,,,
+Wave Audio,,,
+X-PNG Image,,,
+XML,,,

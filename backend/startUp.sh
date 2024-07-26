@@ -1,0 +1,1 @@
+nohup java --add-opens java.base/java.lang=ALL-UNNAMED -XX:+UseParallelGC -XX:+UseStringDeduplication -Xmx2g -jar target/backend-0.0.1-SNAPSHOT-exec.jar &

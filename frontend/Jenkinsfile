@@ -1,0 +1,21 @@
+pipeline {
+     agent any
+     stages {
+        stage("Build") {
+            steps {
+                sh "chmod +x *"
+                sh "sudo cp -r ${WORKSPACE} /home/ec2-user/build"
+                sh "npm build"
+                sh "cp -r ${WORKSPACE}/build/ /home/ec2-user/"
+                sh "npm install"
+                sh "npm run build"
+            }
+        }
+        stage("Deploy") {
+            steps {
+                sh "cd build"
+                sh "sudo cp -r ${WORKSPACE}/build/ /home/ec2-user/"
+            }
+        }
+    }
+}

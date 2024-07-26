@@ -1,0 +1,61 @@
+@use './../abstracts/mixin' as *;
+
+/* ===== @import font-family ====== */
+
+@font-face {
+	font-family: 'Conv_GothamBook';
+	src: url('../../fonts/GothamBook/GothamBook.eot');
+	src: url('../../fonts/GothamBook/GothamBook.woff') format('woff'), url('../../fonts/GothamBook/GothamBook.ttf') format('truetype'), url('../../fonts/GothamBook/GothamBook.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Conv_GothamMedium';
+	// src: url('../../fonts/GothamMedium/GothamMedium.eot');
+	src: url('../../fonts/GothamMedium/Gotham\ Medium.eot');
+	src: url('../../fonts/GothamMedium/Gotham\ Medium.woff') format('woff'), url('../../fonts/GothamMedium/Gotham\ Medium.ttf') format('truetype'), url('../../fonts/GothamMedium/Gotham\ Medium.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Conv_Gotham Bold';
+	src: url('../../fonts/GothamBold/Gotham\ Bold.eot');
+	src: url('../../fonts/GothamBold/Gotham\ Bold.woff') format('woff'), url('../../fonts/GothamBold/Gotham\ Bold.ttf') format('truetype'), url('../../fonts/GothamBold/Gotham\ Bold.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+
+
+
+
+$allFontWeight:(
+    t   :  100,  // thin
+    el  :  200,  // extra light
+    l   :  300,  // light
+    r   :  400,  // regular
+    m   :  500,  // medium
+    sb  :  600,  // semi bold
+    b   :  700,  // bold
+    eb  :  800,  // extra bold
+    blk :  900   // black
+);
+
+@mixin fw($key) {
+    font-weight: map-get($allFontWeight, $key) !important;
+}
+
+//-- FONT WEIGHT CLASS --//
+@each $fwName, $fwValue in $allFontWeight{
+    .fw--#{$fwName}{
+        font-weight: $fwValue !important;
+    }
+}
+
+:root{
+    --ff: 'Conv_GothamBook';
+    --fs-root: 16px;
+}

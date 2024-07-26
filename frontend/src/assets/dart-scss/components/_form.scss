@@ -1,0 +1,963 @@
+@use './../project/colors' as *;
+@use './../project/typo' as *;
+@use './../abstracts/mixin' as *;
+@use './../abstracts/flex-mixin' as *;
+
+
+.allForm {
+	--fsize: 16px;
+	--frmPad: 16px;
+	--frmRadius: 3px;
+	--fsizeHasValue: 12px;
+	--frmLabelfsize: 16px;
+	--frmLabelClr: #2e2e2e;
+	--frmLabelBgClr: #fff;
+	--frmClr: #000000;
+	--frmBorderClr: #d6d6d6;
+	--frmFieldBg: transparent;
+	--frmFieldGap: 20px;
+	--frmFieldHeight: 58px;
+  @media (max-width: 1540px) {
+    --fsize: 12.8px;
+	--frmPad: 12.8px;
+    --frmLabelfsize: 12.8px;
+	--frmFieldHeight: 50px;
+  }
+	&.white {
+	--frmLabelClr: #fff;
+	--frmClr: #fff;
+	--frmBorderClr: #505050;
+	
+	  option {
+		background: #fff;
+		// font-weight: $fw-reg;
+	  }
+	}
+	// .form-field:not(.placeLeft){
+	//   @include placeholder{
+	//     text-align: right;
+	//     color: var(--frmClr);
+	//   }
+	// }
+  }
+  
+  .allForm .flex-sb{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 40px;
+  }
+
+  .form-element-grp{
+	 & > * + *{
+		  margin-left: 20px;
+	  }
+  }
+  
+  
+  // form autofill
+  .allForm input:-webkit-autofill,
+  .allForm input:-webkit-autofill:hover,
+  .allForm input:-webkit-autofill:focus,
+  .allForm textarea:-webkit-autofill,
+  .allForm textarea:-webkit-autofill:hover,
+  .allForm textarea:-webkit-autofill:focus,
+  .allForm select:-webkit-autofill,
+  .allForm select:-webkit-autofill:hover,
+  .allForm select:-webkit-autofill:focus {
+	transition: background-color 50000s ease-in-out 0s;
+	-webkit-transition: background-color 50000s ease-in-out 0s;
+	-webkit-text-fill-color: var(--frmClr) !important;
+  }
+  
+  // remove safari autofill human icon
+  .allForm input::-webkit-contacts-auto-fill-button {
+	visibility: hidden;
+	display: none !important;
+	pointer-events: none;
+	position: absolute;
+	right: 0;
+  }
+  
+  // input - text, passord, email
+  .allForm .form-element {
+	width: 100%;
+	position: relative;
+	margin-bottom: 15px;
+  b {
+	  color:red;
+  }
+	&.mb-0{
+		margin-bottom: 0px;
+	}
+	
+	&.fullW {
+	  width: 100% !important;
+	}
+	&.no-form-field {
+	  line-height: 48px;
+	  & > *:not(:last-child) {
+		margin-right: 15px;
+	  }
+	}
+	&.field-error .form-field{
+	  --frmBorderClr: #{color(red)};    
+	}
+  }
+  
+  .allForm .fInfo {
+	font-size: 14px;
+	opacity: 0.6;
+	text-align: left !important;
+	margin-top: 10px;
+	margin-bottom: 10px;
+  }
+  
+  .allForm .form-label-btm{
+	padding-left: var(--frmFieldGap);
+	margin-top: 10px;
+	font-size: 18px;
+	opacity: 0.6;
+  }
+  
+  .allForm .form-element .form-field {
+	width: 100%;
+	height: var(--frmFieldHeight);
+	font-weight: inherit;
+	text-align: left;
+	padding: 18px 35px 5px var(--frmFieldGap);
+	border: 1px solid var(--frmBorderClr);
+	font-size: var(--fsize);
+	resize: none;
+	color: var(--frmClr);
+	background-color: var(--frmFieldBg);
+	border-radius: var(--frmRadius);
+	-webkit-border-radius: var(--frmRadius);
+	-moz-border-radius: var(--frmRadius);
+	-ms-border-radius: var(--frmRadius);
+	-o-border-radius: var(--frmRadius);
+  }
+  
+  .allForm .form-element .form-field:placeholder-shown {
+	padding-top: 5px;
+  }
+  //-- input - text, passord, email
+  
+  
+  .allForm .form-element.has-child {
+	margin-bottom: 0px;
+  }
+  
+  .allForm .form-element .form-label {
+	font-weight: inherit;
+	width: auto;
+	font-size: var(--frmLabelfsize);
+	color: var(--frmLabelClr);
+	position: absolute;
+	top: 15px;
+	left: var(--frmFieldGap);
+	pointer-events: none;
+	transition: 0.2s;
+	-webkit-transition: 0.2s;
+	-moz-transition: 0.2s;
+	-ms-transition: 0.2s;
+	-o-transition: 0.2s;
+  }
+  
+  // textarea
+  .allForm .form-element.form-textarea {
+	width: 100%;
+	  &::before{
+		content:'';
+		position: absolute;
+		top: 1px;
+		left: 2px;
+		right: 15px;
+		height: 28px;
+		background-color: var(--taBgClr, #fff);
+		pointer-events: none;
+	  }
+  }
+  
+  .allForm .form-element.form-textarea .form-field {
+	height: 140px;
+	line-height: 22px;
+	padding: 30px var(--frmFieldGap) 5px var(--frmFieldGap) !important;
+  }
+  
+  //-- textarea
+  
+  
+  
+  // captcha
+  .allForm .form-captcha {
+	width: auto;
+	display: inline-flex;
+	flex-direction: row;
+	-webkit-box-align: center;
+	-moz-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	flex-wrap: wrap;
+	-webkit-box-pack: flex-end;
+	-moz-box-pack: flex-end;
+	-webkit-justify-content: flex-end;
+	-ms-flex-pack: flex-end;
+	justify-content: flex-end;
+	font-size: 15px;
+  }
+  
+  .allForm .form-captcha label {
+	margin-right: 10px;
+	font-size: var(--frmLabelfsize);
+	color: var(--frmLabelClr);
+  }
+  
+  .allForm .form-captcha span {
+	margin-right: 5px;
+	font-weight: 400;
+  }
+  
+  .allForm .form-captcha span:last-child {
+	margin-right: 0px;
+  }
+  
+  .allForm .form-captcha span input[type="text"] {
+	width: 45px;
+	height: 45px;
+	outline: none;
+	padding: 0 3px;
+	margin-left: 1px;
+	text-align: center;
+	border: 1px solid var(--frmBorderClr);
+	background-color: var(--frmFieldBg);
+	border-radius: var(--frmRadius);
+	-webkit-border-radius: var(--frmRadius);
+	-moz-border-radius: var(--frmRadius);
+	-ms-border-radius: var(--frmRadius);
+	-o-border-radius: var(--frmRadius);
+	
+	}
+  
+  .allForm .form-captcha span input::-webkit-contacts-auto-fill-button {
+	visibility: hidden;
+	display: none !important;
+	pointer-events: none;
+	position: absolute;
+	right: 0;
+  }
+  
+  .allForm .form-captcha span.chp_inp {
+	margin-left: 8px;
+	margin-right: 0;
+  }
+  
+  .allForm .form-captcha span b {
+	color: color(red);
+	margin-right: 3px;
+  }
+  
+  .allForm .form-captcha i.msg-error {
+	left: auto;
+	right: 0px;
+  }
+  //-- captcha
+  
+  
+  
+  // SELECT AND DATE
+  .allForm .form-element.form-select .form-field,
+  .allForm .form-element.form-date .form-field {
+	padding-right: 50px;
+  }
+  
+  
+  .allForm .form-element.form-select .form-field option{
+	color: initial;
+  }
+  
+  .allForm .form-element.form-date::after,
+  .allForm .form-element.form-zipcode::after{
+	content: '';
+	position: absolute;
+	top: 7px;
+	right: 2px;
+	width: 42px;
+	height: 42px;
+	background-repeat: no-repeat;
+	background-position: center;
+	pointer-events: none;
+  }
+  
+  .allForm .form-element.form-select::after {
+	  content: '';
+	  position: absolute;
+	  top: 22px;
+	  right: 18px;
+	  width: 8px;
+	  height: 8px;
+	  @include transform(rotate(45deg));
+	  border-style: solid;
+	  border-color: var(--frmClr);
+	  border-width: 0 2px 2px 0;
+	  @media(max-width:1540px){
+		top: 18px;
+	}
+  }
+  
+  .allForm .form-element.form-date::after {
+	width: 45px;
+	background-image: url('../../img/icons/calander.svg');
+	background-size: 23px;
+  }
+  
+  .allForm .form-element.form-zipcode::after {
+	background-image: url('../../img/icons/calander.svg');
+	background-size: 20px;
+  }
+  
+  // SELECT AND DATE
+  
+  // @-moz-document url-prefix() {
+  //   .allForm .form-element.form-select .form-field {
+  //     padding-top: 30.2px;
+  //   }
+  // }
+  // @media screen and (-webkit-min-device-pixel-ratio:0) {p
+  // 	.allForm .form-element.form-select select.form-field{
+  // 		padding-top: 14px;
+  // 	}
+  // }
+  
+  // INLINE SELECT
+  .allForm .form-inline-select{
+	display: inline-block;
+	position: relative;
+  width: 130px !important;
+  }
+  
+  .allForm .form-inline-select::after{
+	  content: '';
+	  position: absolute;
+	  top: 18px;
+	  right: 18px;
+	  width: 8px;
+	  height: 8px;
+	  @include transform(rotate(45deg));
+	  border-style: solid;
+	  border-color: var(--frmClr);
+	  border-width: 0 2px 2px 0;
+  }
+  
+  .allForm .form-inline-select select{
+	padding: 10px 30px 10px 15px !important;
+	border: 3px solid var(--frmBorderClr);
+	font-size: var(--fsize);
+	background: transparent;
+	resize: none;
+	color: var(--frmClr);
+	background-color: #fff;
+  }
+  
+  .allForm .form-inline-select select option{
+	color: #000;
+  }
+  // INLINE SELECT
+  
+  
+  
+  // .allForm .form-info {
+  //   width: auto;
+  //   font-size: 12px;
+  //   margin-top: 0.5em;
+  //   opacity: 0.8;
+  //   color: #225f79;
+  //   .link {
+  //     margin: 0;
+  //   }
+  // }
+  
+  .allForm.form-inline {
+	& > * {
+	  float: left;
+	  margin-bottom: 0;
+	  &:not(:first-child) {
+		margin-left: 15px;
+	  }
+	  .form-field {
+		width: 280px;
+	  }
+	}
+  }
+  
+  // INPUT = FILE
+  .allForm .form-element.form-file {
+	//white-space: nowrap;
+	// overflow: hidden;
+	// text-overflow: ellipsis;
+	&:not(.form-file-lg){
+	//   .form-field{
+	// 	background-repeat: no-repeat;
+	// 	background-position: 97% center;
+	// 	background-image: url('./../img/icons/upload.svg');
+	// 	background-size: 30px;
+	//   }
+	}
+	label:not(.form-label):not(.error) {
+	  position: relative;
+	}
+	[type="file"] {
+	  opacity: 0;
+	  position: absolute;
+	  left: 0;
+	  top: 0;
+	  bottom: 0;
+	  right: 0;
+	}
+	#filename{
+		padding-top: 28px;
+	}
+  }
+  // INPUT = FILE
+  
+  .allForm .form-element.form-file.form-file-lg{
+	--frmFieldGap: 112px;
+	&.has-value{
+	  .form-label{
+		padding: 0;
+		left: var(--frmFieldGap);
+		top: 30px;
+		font-size: 14px;
+	  }
+	}
+	.form-field{
+	  height: auto;
+	  min-height: 110px;
+	  padding-top: 50px;
+	  background-repeat: no-repeat;
+	  background-position: 20px center;
+	  background-size: 60px;
+	}
+	.form-label{
+	  font-size: 20px;
+	  top: 41px;
+	}
+	&.form-file-img{
+	  .form-field{
+		background-image: url('../../img/icons/calander.svg');
+	  }
+	  .view-store-logo{
+		position: absolute;
+		width: 95px;
+		top: 4px;
+		height: 100px;
+		left: 7px;
+		background-color: #fff;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+	  }
+	}
+	&.form-file-vdo{
+	  .form-field{
+		background-image: url('../../img/icons/calander.svg');
+	  }
+	}
+  }
+  
+  
+  
+  // BTN
+  .allForm .form-btn-element .btn{
+	border-radius: var(--frmRadius);
+  }
+  
+  
+  // DEBIT CARD GROUP
+  .allCardIcon {
+	position: absolute;
+	top: 17px;
+	right: 12px;
+	.icon {
+	  width: 50px;
+	  height: 31px;
+	  background-repeat: no-repeat;
+	  background-size: contain;
+	  $allCardIcon: amex, diners, discover, jcb, maestro, mastercard, visa;
+	  @each $icons in $allCardIcon {
+		&.icon-#{$icons} {
+		//   background-image: url('../../img/icons/calander.svg');
+		  background-image: url('../../img/allCardIcon/#{$icons}.svg');
+		}
+	  }
+	}
+	.icon:not(.active) {
+	  display: none;
+	}
+  }
+  // DEBIT CARD GROUP
+  
+  
+  // CHECK BOX
+  .form-checkbox{
+	position: relative;
+	float: left !important;
+	cursor: pointer;
+	color:#000;
+	float: left;
+	top: 0;
+	opacity: 1;
+	z-index: 9;
+	width: auto;
+	pointer-events: auto;
+	width:auto !important;
+	input[type="checkbox"] {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  width: 0;
+	  height: 0;
+	  border: 0;
+	  outline: 0;
+	  opacity: 0;
+	  &:checked ~ span {
+		border:1px solid color(black);
+		&:before {
+		  content: "";
+		  background: color(black);
+		  left: 50%;
+		  top: 50%;
+		  position: absolute;
+		  transform: translate(-50%, -50%);
+		}
+	  }
+	}
+	span{
+	  width: 15px;
+	  height: 15px;
+	  float: left;
+	  border-radius: var(--frmRadius, 0);
+	  background-color: color(white);
+	  border: 1px solid #a7a7a7;
+	  background-repeat: no-repeat;
+	  background-size: 12px;
+	  background-position: center;
+	  position: relative;
+	  top: 4px;
+	  border-radius: 0;
+	  &:before {
+		width: 8px;
+		position: absolute;
+		height: 8px;
+	  }
+	}
+	p {
+	  float: left;
+	  text-transform: capitalize;
+	  display: inline-block;
+	  margin-bottom: 0;
+	  margin-left: 10px;
+	  margin-top: 5px;
+	  font-size: 0.8rem;
+	  line-height: normal !important;
+	  a {
+		text-decoration: underline;
+	  }
+	}
+  } 
+  // CHECK BOX
+  
+  
+  
+  // RADIO BUTTON
+  .rdio-cont {
+	// @include d-flex(r, fs, c);
+	min-height: var(--frmFieldHeight);
+	
+	font-size: var(--frmLabelfsize);
+	color: var(--frmLabelClr);
+	.rdio-title{
+	  margin-right: 1em;
+	}
+  }
+  
+  .radio_btn_group {
+	// margin-bottom: 65px;
+	padding: 0 10px;
+	border: 1px solid transparent;
+	.rb_container {
+	  // margin-bottom: 30px;
+	  margin-top: 0;
+	  display: inline-block;
+	  position: relative;
+	  padding-left: 32px;
+	  cursor: pointer;
+	  -webkit-user-select: none;
+	  -moz-user-select: none;
+	  -ms-user-select: none;
+	  user-select: none;
+  
+	  input {
+		position: absolute;
+		opacity: 0;
+		cursor: pointer;
+		height: 0;
+		width: 0;
+		&:checked {
+		  ~  {
+			.radio_button {
+			  &:after {
+				@include transform(scale(1));
+				@include transition(0.2s);
+			  }
+			}
+		  }
+		}
+	  }
+	  .radio_button {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 20px;
+		width: 20px;
+		background-color: color(white);
+		border: 1px solid color(txt);
+		border-radius: 50%;
+		&:after {
+		  content: '';
+		  width: 10px;
+		  height: 10px;
+		  position: absolute;
+		  left: 4px;
+		  top: 4px;
+		  background-color: color(blue4);
+		  border-radius: 50%;
+		  @include transform(scale(0));
+		  @include transition(0.2s);
+		}
+	  }
+	}
+  }
+  // RADIO BUTTON
+  
+  
+  
+  // FOR INLINE FORM ELEMENT
+  .allForm .form-flexsb {
+	width: 100%;
+	float: left;
+  @include d-flex(r, fe, c);
+  }
+  // FOR INLINE FORM ELEMENT
+  
+  
+  
+  // ALL ERRO AND SUCCESS
+  span.msg-error,
+  i.msg-error,
+  label.error,
+  i.error{
+	position: absolute;
+	top: 104%;
+	left: 0;
+	color: color(error);
+	font-size: 12px;  
+	line-height: normal;
+	font-style: normal;
+	font-weight: normal;
+	&.msg-error-full{
+	  white-space: nowrap;
+	}
+  }
+  
+  .fl-failed,
+  .fl-success,.fl-error{
+	width: 100%;
+	float: left;
+	font-size: 16px;
+	text-align: left;
+	margin-bottom: 0px;
+	padding: 10px 15px;
+	margin: 25px 0;
+	color: #fff;
+	border-radius: 3px;
+  }
+  
+  .fl-failed,.fl-error{
+	background: #ff4343;
+  }
+  
+  .fl-success {
+	background-color: #3a8f3b;
+  }
+  
+  .fl-msg{
+	color: #fff;
+	background-color:#2a2c32;
+	display: inline-block;
+	padding: 15px 45px;
+	font-size: 18px;
+	border-radius: 25px;
+	-webkit-box-shadow: 0px 0px 87.2px 21.8px rgba(0,0,0,0.23);
+	box-shadow: 0px 0px 20px 1px rgba(249, 249, 249, 0.23);
+	position: fixed;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: -100px;
+	z-index: -9999;
+	visibility: hidden;
+	@include transition(bottom 0.5s);
+	&.showing-up{
+	  bottom: 150px;
+	  z-index: 9999;
+	  visibility: visible;
+	  @include transition(bottom 0.5s);
+	}
+  }
+  
+  // TAB RADIO
+  .tab-rdio{
+	width: 100%;
+	& > div:not(.checked){
+	  display:none;
+	}
+  }
+  .tab-rdio-chk-block{
+	& > label{
+	  display: block;
+	  padding: 25px 60px;
+	  margin: 0 !important;
+	  &:nth-child(odd){
+		background-color: color(bg);
+	  }
+	}
+	.checkmark{
+	  background-color: transparent;
+	  top: 26px;
+	  left: 25px;
+	}
+  }
+  
+  // FORM TITLE
+  .allForm .form-title{
+	margin-top: 40px;
+	font-size: 22px;
+	margin-bottom: 10px;
+  }
+  
+  // HAS VALUE
+  .allForm .form-element.form-select:not(.has-value) .form-field{
+	color: #fff;
+  }
+  
+  .allForm .form-element.has-value{
+	// --frmBorderClr: #b7b7b7;
+	
+	.form-label{
+	  font-size: 12px;
+	  top: 4px;
+	  left: var(--frmFieldGap);
+	  // background-color: var(--frmLabelBgClr);
+	  // color: color(black);
+	  opacity: 0.55;
+	}
+  }
+  
+  .allForm .form-field-info{
+	position: absolute;
+	top: 13px;
+	right: 15px;
+	cursor: pointer;
+	z-index: 2;
+  }
+  
+  .allForm .file-view{
+	position: absolute;
+	top: calc(var(--frmFieldHeight) + 10px);
+	right: 0;
+	font-size: 17px;
+  }
+  // -----------------------------------------------------------------------------------------
+  
+
+  
+  .select:not(.form-field){
+	padding: 5px 30px 5px 10px;
+	background-image: url('../../img/icons/calander.svg');
+	background-repeat: no-repeat;
+	background-position: 90%;
+	background-size: 10px;
+	border: 1px solid #dadada;
+  border-radius: 4px;
+	font-size: 15px;
+  }
+  select {
+    background: color(white);
+    option {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+  }
+
+  .divi{
+	position: relative;
+	z-index: 1;
+	&::before{
+		content: 'OR';
+		display: inline-block;
+		background-color: color(white);
+		font-size: 18px;
+		padding: 0 15px;
+		width: 60px;
+		position: absolute;
+		top: -10px;
+		left:50%;
+		margin-left:-30px;
+	}
+	&::after{
+		content: '';
+		width: 100%;
+		height: 1px;
+		background-color: #a8a8a8;
+    transform: translateY();
+		left: 0;
+		right: 0;
+		z-index: -1;
+	}
+}
+
+.form-elementfile {
+	input[type="file"] {
+		width: 0;
+		float: left;
+		opacity: 0;
+		padding: 0;
+		border: 0;
+		font-size: 0;
+	}
+	label {
+		float: left;
+		width: 100%;
+		margin: 0px;
+		height: 60px;
+		line-height: 60px;
+		padding-left: 55px;
+		overflow: hidden;
+		background: url(../../img/icons/calander.svg) no-repeat left 15px center;
+		background-size:32px;
+		border: 1px solid var(--frmBorderClr);
+		border-radius: var(--frmRadius);
+		font-size: 15px;
+	}
+	p {
+		font-size: 12px;
+		line-height: 18px;
+		width: 100%;
+		float: left;
+		margin: 4px 0 0 0;
+	}
+}
+
+.allForm.fullwidth {
+	flex-direction: column !important;
+	justify-content: flex-start !important;
+	.form-element {
+		width: 100% !important;
+	}
+}
+
+// CheckBox Design Start
+.check_wrapper{
+	.check_container {
+		font-family: 'Conv_GothamBook';
+		display: inline-block;
+		position: relative;
+		padding-left: 32px;
+		margin-bottom: 12px;
+		cursor: pointer;
+		font-size: toRem(16);
+		color: color(gray);
+		font-weight: normal;        
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		@media(max-width:1540px){
+			font-size: toRem(12.8);
+		}
+		a{
+			font-weight: bold;
+			text-decoration: underline !important;
+			transition: 0.4s;
+			&:hover {
+				color: color(black);
+			}
+		}
+	  }
+	  
+	  /* Hide the browser's default checkbox */
+	  .check_container input {
+		position: absolute;
+		opacity: 0;
+		cursor: pointer;
+		height: 0;
+		width: 0;
+	  }
+	  
+	  /* Create a custom checkbox */
+	  .check_container .checkmark {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 25px;
+		width: 25px;
+		border:1px solid color(gray);
+		border-radius: 3px;
+		@media (max-width: 1540px) {
+		  height: 20px;
+		  width: 20px;
+		}
+	  }
+  
+	  /* When the checkbox is checked, add a blue background */
+	  .check_container input:checked ~ .checkmark {
+		background-color: color(blue);
+		border-color: color(blue);
+	  }
+	  
+	  /* Create the checkmark/indicator (hidden when not checked) */
+	  .checkmark:after {
+		content: "";
+		position: absolute;
+		display: none;
+	  }
+	  
+	  /* Show the checkmark when checked */
+	  .check_container input:checked ~ .checkmark:after {
+		display: block;
+	  }
+	  
+	  /* Style the checkmark/indicator */
+	  .check_container .checkmark:after {
+		left: 9px;
+		top: 5px;
+		width: 5px;
+		height: 10px;
+		border: solid color(white);
+		border-width: 0 2px 2px 0;
+		-webkit-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		transform: rotate(45deg);
+		@media (max-width: 1540px) {
+			left: 7px;
+			top: 3px;
+		}
+	  }
+  }
+  // CheckBox Design End
+
+  .datepicker {
+    background: url(../../img/icons/calander.svg) no-repeat center right 10px;
+    background-size: 18px;
+  }

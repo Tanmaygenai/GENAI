@@ -1,0 +1,15 @@
+frontend/node_modules
+frontend/.settings
+frontend/node
+frontend/.gitignore
+frontend/.project
+frontend/.classpath
+frontend/.vs
+backend/.settings
+backend/.gitignore
+backend/.project
+backend/.classpath
+backend/logs
+.project
+.settings
+frontend/.env

@@ -1,0 +1,96 @@
+@use './../abstracts/mixin' as *; 
+@use './../project/colors' as *; 
+@use './../project/typo' as *; 
+
+$defaultButtonBackground: #CF0918;
+$defaultButtonColor: #ffffff;
+
+@media(min-width: 1729px){
+    :root{
+        --btn-fs: 0.8rem;
+        --btn-size: 0.9em 2em;
+        --btn-sizeEX: 0.9em 3em;
+    }
+}
+
+.btns{
+    & > *:not(:last-child){
+        margin-right: 0.5em;
+    }
+}
+.btn {
+    padding: 12px 25px;
+    cursor: pointer;
+    transition: 0.4s;
+    font-size: toRem(16);
+    font-family: 'Conv_GothamMedium';
+    border-radius: 4px;
+    text-transform: uppercase;
+    @media (max-width: 1540px) {
+        font-size: toRem(12.8);
+    }
+    &.blue {
+        background: var(--defaultButtonBackground);
+        color: var(--defaultButtonColor);
+        &:hover {
+            background: var(--defaultButtonBackground);
+        }
+    }
+    &.outline {
+        color: color(black);
+        border-bottom: 1px solid color(black);
+        padding: 5px 35px 8px 5px;
+        border-radius: 0;
+        background: url(../../img/icons/plus.svg) no-repeat center right 5px color(white);
+        background-size: 20px;
+        filter: grayscale(1);
+        transition: 0.4s;
+        &:hover {
+            color: color(blue);
+            border-bottom: 1px solid color(blue);
+            filter: grayscale(0);
+        }
+    }
+    &.outlinefull {
+        color: color(black);
+        border: 1px solid color(black);
+        padding: 10px 40px 10px 15px;
+        border-radius: 0;
+        font-size: toRem(15);
+        background: url(../../img/icons/plus.svg) no-repeat center right 8px color(white);
+        background-size: 22px;
+        filter: grayscale(1);
+        transition: 0.4s;
+        border-radius: 4px;
+        @media (max-width: 1540px) {
+            font-size: toRem(12);
+            background-size: 18px;
+        }
+        &:hover {
+            color: color(blue);
+            border: 1px solid color(blue);
+            filter: grayscale(0);
+        }
+    }
+    &.download {
+        color: color(black);
+        border: 1px solid color(black);
+        padding: 8px 12px 8px 38px;
+        border-radius: 0;
+        font-size: toRem(14);
+        background: url(../../img/icons/download.png) no-repeat center left 10px color(white);
+        background-size: 18px;
+        filter: grayscale(1);
+        transition: 0.4s;
+        border-radius: 4px;
+        @media (max-width: 1540px) {
+            font-size: toRem(11.2);
+            background-size: 14.4px;
+        }
+        &:hover {
+            color: color(blue);
+            border: 1px solid color(blue);
+            filter: grayscale(0);
+        }
+    }
+}
